@@ -37,6 +37,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioClip _laserFireAudio;
     private AudioSource _audioSource;
+    [SerializeField]
+    private bool _canPirce = false;
+    [SerializeField]
+    private bool _pircingEnabled;
     #endregion
 
     // Start is called before the first frame update
@@ -220,5 +224,34 @@ public class Player : MonoBehaviour
         if(_lives < 3){
             _lives++;
         }
+        if (_engines[1].gameObject.activeInHierarchy == true)
+        {
+            _engines[1].SetActive(false);
+        }
+        else if (_engines[0].gameObject.activeInHierarchy == true)
+        {
+            _engines[0].SetActive(false);
+        }
+    }
+
+    public void PircePowerupCollected(){
+        _canPirce = true;
+        StartCoroutine(PircePowerdownRoutine());
+    }
+
+    IEnumerator PircePowerdownRoutine(){
+        if (_canPirce == true){
+            _pircingEnabled = true;
+            yield return new WaitForSeconds(5.0f);
+            _canPirce = false;
+            _pircingEnabled = false;
+        }
+    }
+
+    public bool PircingEnebled(){
+        if (_pircingEnabled == true){
+            return true;
+        }
+        return false;
     }
 }

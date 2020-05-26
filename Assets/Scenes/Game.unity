@@ -169,6 +169,8 @@ MonoBehaviour:
   - {fileID: 1698311559}
   - {fileID: 1849657613}
   _laserFireAudio: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
+  _canPirce: 0
+  _pircingEnabled: 0
 --- !u!212 &7056440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -873,6 +875,7 @@ MonoBehaviour:
   - {fileID: 8907184555808333270, guid: 17f4cc5808ed68a43966a750dfb66ae6, type: 3}
   - {fileID: 8241099323776306814, guid: b894d3e2655a41641bc98649b2109506, type: 3}
   - {fileID: 5685056996518429651, guid: 3ae8bda987a53dc4985a82f1e1463943, type: 3}
+  - {fileID: 5139683861112292835, guid: 20528c2bf895dd44984bac5c20b9b6ec, type: 3}
 --- !u!212 &553675831
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -79,7 +79,9 @@ public class Enemy : MonoBehaviour
             _player.AddScore(10);
             _animator.SetTrigger("OnEnemyDeath");
             _speed = 0;
-            Destroy(other.gameObject);
+            if (_player.PircingEnebled() != true){
+                Destroy(other.gameObject);
+            }
             _explosion.Play(0);
             StopCoroutine(FireLaserRoutine());
             _isDead = true;

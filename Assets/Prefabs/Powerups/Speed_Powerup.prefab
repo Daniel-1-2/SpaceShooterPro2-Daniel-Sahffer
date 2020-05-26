@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 3
   _powerupId: 1
+  _rareaty: 8
 --- !u!95 &947727782
 Animator:
   serializedVersion: 3

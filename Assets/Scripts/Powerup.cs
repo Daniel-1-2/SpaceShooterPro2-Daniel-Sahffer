@@ -10,6 +10,9 @@ public class Powerup : MonoBehaviour
     [SerializeField]
     private float _powerupId;
     private AudioSource _powerupSound;
+    [SerializeField]
+    private float _rareaty;
+    private SpawnManager _spawnManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,13 @@ public class Powerup : MonoBehaviour
         if(_powerupSound == null){
             Debug.LogError("The Powerup Sound is NULL.");
         }
+
+        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        if(_spawnManager == null){
+            Debug.LogError("The SpawnManager is NULL.");
+        }
+
+        _spawnManager.RareatyReturn(_rareaty);
     }
 
     // Update is called once per frame
@@ -50,6 +60,9 @@ public class Powerup : MonoBehaviour
                 break;
                 case 4:
                 _player.CollectedHealthPowerup();
+                break;
+                case 5:
+                _player.PircePowerupCollected();
                 break;
                 default:
                 Debug.Log("Not a valid powerup id.");
