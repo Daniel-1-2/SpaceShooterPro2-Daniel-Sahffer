@@ -72,12 +72,20 @@ public class Player : MonoBehaviour
         transform.Translate(Vector3.up * verticalInput * _speed * Time.deltaTime);
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
         */
+
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         if(_isSpeedBoostActive == true){
             transform.Translate(direction * (_speedMultiplier * _speed) * Time.deltaTime);
         }
         else{
             transform.Translate(direction * _speed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)){
+            _speed += 2;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift)){
+            _speed -= 2;
         }
 
         float yRange = Mathf.Clamp(transform.position.y, -4, 0);
