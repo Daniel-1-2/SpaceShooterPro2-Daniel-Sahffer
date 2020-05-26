@@ -72,6 +72,10 @@ public class Player : MonoBehaviour
         {
             _shieldVisualizer.GetComponent<SpriteRenderer>().color = Color.red;
         }
+        else if(_shieldLives == 3){
+            _shieldVisualizer.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        _uiManager.UpdateAmmoVisual(_ammo);
     }
 
 
@@ -125,7 +129,6 @@ public class Player : MonoBehaviour
         _audioSource.clip = _laserFireAudio;
         _audioSource.Play(0);
         _ammo--;
-        _uiManager.UpdateAmmoVisual(_ammo);
     }
 
     public void Damage(){
@@ -206,5 +209,9 @@ public class Player : MonoBehaviour
     public void AddScore(int points){
         _score += points;
         _uiManager.UpdateScoreText(_score);
+    }
+
+    public void AddAmmo(){
+        _ammo = 15;
     }
 }

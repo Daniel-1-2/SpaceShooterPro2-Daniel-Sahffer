@@ -871,6 +871,7 @@ MonoBehaviour:
   - {fileID: 3559344294475194786, guid: 58977028bc5804746bf40827a88ec34e, type: 3}
   - {fileID: 1907758734313753461, guid: 6d6568aa038d5af4f98bf5f2c31a08bb, type: 3}
   - {fileID: 8907184555808333270, guid: 17f4cc5808ed68a43966a750dfb66ae6, type: 3}
+  - {fileID: 8241099323776306814, guid: b894d3e2655a41641bc98649b2109506, type: 3}
 --- !u!212 &553675831
 SpriteRenderer:
   m_ObjectHideFlags: 0
