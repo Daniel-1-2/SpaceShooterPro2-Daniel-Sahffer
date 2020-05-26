@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
     [SerializeField]
+    private int _shieldLives = 0;
+    [SerializeField]
     private GameObject _laserPrefab;
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
@@ -59,6 +61,14 @@ public class Player : MonoBehaviour
         CalculateMovement();
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire){
             FireLaser();
+        }
+        if (_shieldLives == 2)
+        {
+            _shieldVisualizer.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else if (_shieldLives == 1)
+        {
+            _shieldVisualizer.GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
 
@@ -115,27 +125,37 @@ public class Player : MonoBehaviour
     }
 
     public void Damage(){
-        if(_isShieldCollected == true){
+        if(_shieldLives <= 3 && _shieldLives > 0){
+            _shieldLives--;
+        }
+        if(_isShieldCollected == true && _shieldLives == 0){
             _shieldVisualizer.SetActive(false);
             _isShieldCollected = false;
             return;
         }
-        _lives--;
-        if(_lives == 2){
-            _engines[Random.Range(0, 2)].SetActive(true);
-        }
-        else if (_lives == 1){
-            if(_engines[1].gameObject.activeInHierarchy == true){
-                _engines[0].SetActive(true);
+        if(_isShieldCollected == false){
+            _lives--;
+            if (_lives == 2)
+            {
+                _engines[Random.Range(0, 2)].SetActive(true);
             }
-            else if(_engines[0].gameObject.activeInHierarchy == true){
-                _engines[1].SetActive(true);
+            else if (_lives == 1)
+            {
+                if (_engines[1].gameObject.activeInHierarchy == true)
+                {
+                    _engines[0].SetActive(true);
+                }
+                else if (_engines[0].gameObject.activeInHierarchy == true)
+                {
+                    _engines[1].SetActive(true);
+                }
             }
-        }
-        _uiManager.UpdateLives(_lives);
-        if (_lives <= 0 ){
-            Destroy(this.gameObject);
-            _spawnManager.OnPlayerDeath();
+            _uiManager.UpdateLives(_lives);
+            if (_lives <= 0)
+            {
+                Destroy(this.gameObject);
+                _spawnManager.OnPlayerDeath();
+            }
         }
     }
 
@@ -176,6 +196,7 @@ public class Player : MonoBehaviour
     public void ShieldCollected(){
         _isShieldCollected = true;
         _shieldVisualizer.SetActive(true);
+        _shieldLives = 3;
     }
 
     public void AddScore(int points){

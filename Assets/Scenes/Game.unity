@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3.5
+  _shieldLives: 3
   _laserPrefab: {fileID: 3161833765138258153, guid: 300833796847e0c41b56553f1bd14302,
     type: 3}
   _TripleShotPrefab: {fileID: 6731514229570292670, guid: 821437635e0561d4ba5efd6d746fc7b5,
