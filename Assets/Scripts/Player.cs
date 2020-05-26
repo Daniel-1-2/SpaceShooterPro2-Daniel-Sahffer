@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
             _shieldVisualizer.GetComponent<SpriteRenderer>().color = Color.white;
         }
         _uiManager.UpdateAmmoVisual(_ammo);
+        _uiManager.UpdateLives(_lives);
     }
 
 
@@ -213,5 +214,11 @@ public class Player : MonoBehaviour
 
     public void AddAmmo(){
         _ammo = 15;
+    }
+
+    public void CollectedHealthPowerup(){
+        if(_lives < 3){
+            _lives++;
+        }
     }
 }

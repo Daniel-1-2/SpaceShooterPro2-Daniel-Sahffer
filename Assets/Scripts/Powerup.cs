@@ -48,6 +48,9 @@ public class Powerup : MonoBehaviour
                 case 3:
                 _player.AddAmmo();
                 break;
+                case 4:
+                _player.CollectedHealthPowerup();
+                break;
                 default:
                 Debug.Log("Not a valid powerup id.");
                 break;
