@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private float _speedMultiplier = 2;
     [SerializeField]
     private int _lives = 3;
+    [SerializeField]
+    private int _ammo = 15;
     private bool _isTripleShotActive = false;
     private bool _isSpeedBoostActive = false;
     private bool _isShieldCollected = false;
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update(){
         CalculateMovement();
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire){
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire && _ammo >= 1){
             FireLaser();
         }
         if (_shieldLives == 2)
@@ -122,6 +124,8 @@ public class Player : MonoBehaviour
         }
         _audioSource.clip = _laserFireAudio;
         _audioSource.Play(0);
+        _ammo--;
+        _uiManager.UpdateAmmoVisual(_ammo);
     }
 
     public void Damage(){

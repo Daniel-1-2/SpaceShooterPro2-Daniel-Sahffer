@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text _restartText;
     private GameManager _gameManager;
+    [SerializeField]
+    private Text _ammoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -60,5 +62,9 @@ public class UIManager : MonoBehaviour
             _GameOverText.text = " ";
             yield return new WaitForSeconds(0.75f);
         }
+    }
+
+    public void UpdateAmmoVisual(int ammo){
+        _ammoText.text = "Ammo: " + ammo;
     }
 }
