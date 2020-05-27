@@ -18,9 +18,12 @@ public class UIManager : MonoBehaviour
     private GameManager _gameManager;
     [SerializeField]
     private Text _ammoText;
+    [SerializeField]
+    private Slider _thrust;
     // Start is called before the first frame update
     void Start()
     {
+        _thrust.value = 10;
         _scoreText.text = "Score: " + 0;
         _GameOverText.gameObject.SetActive(false);
 
@@ -66,5 +69,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateAmmoVisual(int ammo){
         _ammoText.text = "Ammo: " + ammo;
+    }
+
+    public void UpdateThrust(float thrust){
+        _thrust.value = thrust;
     }
 }

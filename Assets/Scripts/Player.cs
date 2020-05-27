@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 3.5f;
     [SerializeField]
+    private float _newSpeed = 5.5f;
+    private bool _thrustersEnabled = false;
+    [SerializeField]
     private int _shieldLives = 0;
+    [SerializeField]
+    private float _avalbleThrust = 10;
     [SerializeField]
     private GameObject _laserPrefab;
     private SpawnManager _spawnManager;
@@ -81,6 +86,10 @@ public class Player : MonoBehaviour
         }
         _uiManager.UpdateAmmoVisual(_ammo);
         _uiManager.UpdateLives(_lives);
+        _uiManager.UpdateThrust(_avalbleThrust);
+        if(_avalbleThrust == 0){
+            StartCoroutine(ThrustHeatingUp());
+        }
     }
 
 
@@ -96,18 +105,21 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         if(_isSpeedBoostActive == true){
-            transform.Translate(direction * (_speedMultiplier * _speed) * Time.deltaTime);
+            if(_thrustersEnabled == true){
+                transform.Translate(direction * (_speedMultiplier * _newSpeed) * Time.deltaTime);
+            }
+            else{
+                transform.Translate(direction * (_speedMultiplier * _speed) * Time.deltaTime);
+            }
+        }
+        else if(_thrustersEnabled == true){
+            transform.Translate(direction * _newSpeed * Time.deltaTime);
         }
         else{
             transform.Translate(direction * _speed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)){
-            _speed += 2;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift)){
-            _speed -= 2;
-        }
+        ThrustSystem();
 
         float yRange = Mathf.Clamp(transform.position.y, -4, 0);
         transform.position = new Vector3(transform.position.x, yRange, 0);
@@ -178,7 +190,7 @@ public class Player : MonoBehaviour
         }
 
     }
-
+#region Powerups
     public void TripleShotActive(){
         if(_isTripleShotActive == false){
             _isTripleShotActive = true;
@@ -253,5 +265,46 @@ public class Player : MonoBehaviour
             return true;
         }
         return false;
+    }
+#endregion
+    private void ThrustSystem(){
+        if (_avalbleThrust >= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _thrustersEnabled = true;
+                StartCoroutine(ThrustCooldown());
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                _thrustersEnabled = false;
+                StopCoroutine(ThrustCooldown());
+            }
+        }
+        _uiManager.UpdateThrust(_avalbleThrust);
+        /*
+        if thrust power != 0 && pressing down shift
+        thrust power-- every second
+        if thrust == 0
+        Wait for 10 sec to full charge
+        */ 
+    }
+
+    private IEnumerator ThrustCooldown(){
+        if(_avalbleThrust >= 1){
+            while (Input.GetKey(KeyCode.LeftShift) && _avalbleThrust != 0)
+            {
+                _avalbleThrust--;
+                yield return new WaitForSeconds(1.0f);
+            }
+        }
+    }
+    private IEnumerator ThrustHeatingUp(){
+        if (_avalbleThrust == 0)
+        {
+            _thrustersEnabled = false;
+            yield return new WaitForSeconds(10.0f);
+            _avalbleThrust = 10;
+        }
     }
 }
