@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void UpdateAmmoVisual(int ammo){
-        _ammoText.text = "Ammo: " + ammo;
+        _ammoText.text = "Ammo: " + ammo + "/" + 15;
     }
 
     public void UpdateThrust(float thrust){
