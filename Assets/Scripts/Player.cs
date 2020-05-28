@@ -311,4 +311,9 @@ public class Player : MonoBehaviour
     public int Score(){
         return _score;
     }
+
+    public void NegativePowerup(){
+        _score -= 30;
+        _uiManager.UpdateScoreText(_score);
+    }
 }

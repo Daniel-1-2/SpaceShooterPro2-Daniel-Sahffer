@@ -34,6 +34,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region WaveSystem
         switch(_player.Score()){
             case 100:
             if(_oneTime == 0){
@@ -105,6 +106,7 @@ public class SpawnManager : MonoBehaviour
             }
             break;
         }
+        #endregion
         EnemyKills();
     }
 
@@ -131,7 +133,7 @@ public class SpawnManager : MonoBehaviour
 
         while (_stopSpawning == false){
             Vector3 posToSpawn = new Vector3(Random.Range(-9, 9), 7, 0);
-            Instantiate(_powerups[Random.Range(0, 6)], posToSpawn, Quaternion.identity);
+            Instantiate(_powerups[Random.Range(0, 7)], posToSpawn, Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(3.0f, _rareaty1));
         }
     }

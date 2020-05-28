@@ -279,7 +279,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.377
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -487,7 +487,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.63
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -918,6 +918,7 @@ MonoBehaviour:
   - {fileID: 8241099323776306814, guid: b894d3e2655a41641bc98649b2109506, type: 3}
   - {fileID: 5685056996518429651, guid: 3ae8bda987a53dc4985a82f1e1463943, type: 3}
   - {fileID: 5139683861112292835, guid: 20528c2bf895dd44984bac5c20b9b6ec, type: 3}
+  - {fileID: 7358402298576772170, guid: d6ac1dc53218b1844a640c46d00bb757, type: 3}
 --- !u!212 &553675831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1089,7 +1090,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5b17a0088dcdf924fa92da5af1e1be07, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1666,6 +1667,75 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1001 &1411723988
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772165, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7358402298576772170, guid: d6ac1dc53218b1844a640c46d00bb757,
+        type: 3}
+      propertyPath: m_Name
+      value: Bad_Powerup
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6ac1dc53218b1844a640c46d00bb757, type: 3}
 --- !u!1 &1448612515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1927,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

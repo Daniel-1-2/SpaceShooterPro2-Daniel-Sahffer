@@ -64,6 +64,9 @@ public class Powerup : MonoBehaviour
                 case 5:
                 _player.PircePowerupCollected();
                 break;
+                case 6:
+                _player.NegativePowerup();
+                break;
                 default:
                 Debug.Log("Not a valid powerup id.");
                 break;
