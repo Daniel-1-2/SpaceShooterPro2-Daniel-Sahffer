@@ -307,4 +307,8 @@ public class Player : MonoBehaviour
             _avalbleThrust = 10;
         }
     }
+
+    public int Score(){
+        return _score;
+    }
 }

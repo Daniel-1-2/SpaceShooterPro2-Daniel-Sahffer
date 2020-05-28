@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     private Text _ammoText;
     [SerializeField]
     private Slider _thrust;
+    [SerializeField]
+    private Text _waveText;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,5 +75,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateThrust(float thrust){
         _thrust.value = thrust;
+    }
+
+    public void UpdateWave(int wave){
+        _waveText.text = "Wave: " + wave;
     }
 }
