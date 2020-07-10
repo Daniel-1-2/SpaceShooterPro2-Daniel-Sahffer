@@ -108,6 +108,7 @@ public class SpawnManager : MonoBehaviour
         }
         #endregion
         EnemyKills();
+
     }
 
     public void StartSpawning(){
@@ -147,10 +148,6 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void EnemyKills(){
-        if (_wave == 10)
-        {
-
-        }
         _uiManager.UpdateWave(_wave);
     }
 }

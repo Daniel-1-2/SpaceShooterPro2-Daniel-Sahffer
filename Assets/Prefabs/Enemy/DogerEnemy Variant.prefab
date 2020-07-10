@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 1291419300742704906, guid: ebd2dfb47ac14414dbea9f60b731e310,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1291419300742704906, guid: ebd2dfb47ac14414dbea9f60b731e310,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1291419300742704906, guid: ebd2dfb47ac14414dbea9f60b731e310,
         type: 3}
@@ -65,6 +65,11 @@ PrefabInstance:
     - target: {fileID: 1291419300742704910, guid: ebd2dfb47ac14414dbea9f60b731e310,
         type: 3}
       propertyPath: m_Name
+      value: DogerEnemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291419300742704910, guid: ebd2dfb47ac14414dbea9f60b731e310,
+        type: 3}
+      propertyPath: m_TagString
       value: DogerEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []

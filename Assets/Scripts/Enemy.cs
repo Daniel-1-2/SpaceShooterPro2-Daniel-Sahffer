@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private GameObject _laserPrefab;
     private bool _isDead = false;
     private GameObject playerLaser;
+    [SerializeField]
+    private float _ramSpeed = 1;
     // Start is called before the first frame update
     void Start(){
         FireLaser();
@@ -38,12 +40,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update(){
         CalculateMovement();
-        if(this.gameObject.name == "DogerEnemy" && _player.FiredLaser() != null){
+        if(this.gameObject.CompareTag("DogerEnemy") && _player.FiredLaser() != null){
             float movement = transform.position.x - _player.FiredLaser().transform.position.x;
             Vector3 moveDirection = new Vector3(movement, 0, 0);
             if(movement <= 3){
                 transform.Translate(moveDirection * Time.deltaTime * _dogeSpeed);
             }
+        }
+        Vector3 ramDirection = transform.position - _player.transform.position;
+        if(ramDirection.x <= 1 || ramDirection.y <= 1){
+            transform.Translate(_player.transform.position * Time.deltaTime * _ramSpeed);
         }
     }
 
@@ -107,7 +113,7 @@ public class Enemy : MonoBehaviour
             Destroy(GetComponent<Collider2D>());
             Destroy(this.gameObject, 2.8f);
         }
-
+        
         
     }
 }
