@@ -90,6 +90,13 @@ public class Player : MonoBehaviour
         if(_avalbleThrust == 0){
             StartCoroutine(ThrustHeatingUp());
         }
+        if(_spawnManager.SpawnedPowerup() != null){
+            Vector3 distance = transform.position - _spawnManager.SpawnedPowerup().transform.position;
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                _spawnManager.SpawnedPowerup().transform.Translate(transform.position * _speed * Time.deltaTime);
+            }
+        }  
     }
 
 
