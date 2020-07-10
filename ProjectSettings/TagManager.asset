@@ -12,6 +12,7 @@ TagManager:
   - SuicideBomber
   - DogerEnemy
   - XrayEnemy
+  - Laser_Homing
   layers:
   - Default
   - TransparentFX

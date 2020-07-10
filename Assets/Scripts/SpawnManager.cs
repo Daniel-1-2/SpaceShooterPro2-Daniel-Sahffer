@@ -18,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     private Player _player;
     private int _oneTime = 0;
     private GameObject _spawnedPowerup;
+    private GameObject _newEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -123,8 +124,8 @@ public class SpawnManager : MonoBehaviour
 
         while (_stopSpawning == false){
             Vector3 posToSpawn = new Vector3(Random.Range(-9, 9), 7, 0);
-            GameObject newEnemy = Instantiate(_enemyPrefabs[Random.Range(0, 3)], posToSpawn, Quaternion.identity);
-            newEnemy.transform.parent = _enemyContainer.transform;
+            _newEnemy = Instantiate(_enemyPrefabs[Random.Range(0, 3)], posToSpawn, Quaternion.identity);
+            _newEnemy.transform.parent = _enemyContainer.transform;
             yield return new WaitForSeconds(5.0f / _wave);
         }
     }
@@ -154,5 +155,9 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject SpawnedPowerup(){
         return _spawnedPowerup;
+    }
+
+    public GameObject SpawnedEnemy(){
+        return _newEnemy;
     }
 }

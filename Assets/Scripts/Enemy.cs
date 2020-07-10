@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject, 2.8f);
         }
 
-        if (other.gameObject.tag == "Laser"){
+        if (other.gameObject.tag == "Laser" || other.gameObject.CompareTag("Laser_Homing")){
             _player.AddScore(10);
             _animator.SetTrigger("OnEnemyDeath");
             _speed = 0;

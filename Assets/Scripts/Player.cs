@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private float _newSpeed = 5.5f;
     private bool _thrustersEnabled = false;
     [SerializeField]
+    private bool _homingActive = false;
+    [SerializeField]
     private int _shieldLives = 0;
     [SerializeField]
     private float _avalbleThrust = 10;
@@ -147,6 +149,10 @@ public class Player : MonoBehaviour
         if (_isTripleShotActive == true){
             _laserThatGotFired = Instantiate(_TripleShotPrefab, transform.position + offset, Quaternion.identity);
         }
+        else if(_homingActive == true){
+            GameObject homingLaserFired = Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+            homingLaserFired.transform.Translate(_spawnManager.SpawnedEnemy().transform.position * _speed * Time.deltaTime);
+        }
         else{
             _laserThatGotFired = Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
         }
@@ -203,6 +209,10 @@ public class Player : MonoBehaviour
             _isTripleShotActive = true;
             StartCoroutine(TripleShotPowerdownRoutine());
         }
+    }
+
+    public void HomingActive(){
+        _homingActive = true;
     }
 
     IEnumerator TripleShotPowerdownRoutine(){

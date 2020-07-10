@@ -67,6 +67,9 @@ public class Powerup : MonoBehaviour
                 case 6:
                 _player.NegativePowerup();
                 break;
+                case 7:
+                _player.HomingActive();
+                break;
                 default:
                 Debug.Log("Not a valid powerup id.");
                 break;
