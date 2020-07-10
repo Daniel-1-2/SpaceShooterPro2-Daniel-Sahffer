@@ -8,6 +8,8 @@ TagManager:
   - Laser
   - Shield
   - EnemyLaser
+  - Powerup
+  - SuicideBomber
   layers:
   - Default
   - TransparentFX

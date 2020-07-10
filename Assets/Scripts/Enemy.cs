@@ -6,12 +6,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private float _speed = 4.0f;
+    [SerializeField]
+    private float _dogeSpeed = 2.0f;
     private Player _player;
     private Animator _animator;
     private AudioSource _explosion;
     [SerializeField]
     private GameObject _laserPrefab;
     private bool _isDead = false;
+    private GameObject playerLaser;
     // Start is called before the first frame update
     void Start(){
         FireLaser();
@@ -35,6 +38,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update(){
         CalculateMovement();
+        if(this.gameObject.name == "DogerEnemy" && _player.FiredLaser() != null){
+            float movement = transform.position.x - _player.FiredLaser().transform.position.x;
+            Vector3 moveDirection = new Vector3(movement, 0, 0);
+            if(movement <= 3){
+                transform.Translate(moveDirection * Time.deltaTime * _dogeSpeed);
+            }
+        }
     }
 
     void CalculateMovement(){
@@ -42,6 +52,14 @@ public class Enemy : MonoBehaviour
         if (transform.position.y <= -6)
         {
             transform.position = new Vector3(Random.Range(-9, 9), 7, 0);
+        }
+        if (transform.position.x >= 10)
+        {
+            transform.position = new Vector3(-10, transform.position.y, 0);
+        }
+        else if (transform.position.x <= -10)
+        {
+            transform.position = new Vector3(10, transform.position.y, 0);
         }
     }
 
@@ -89,5 +107,7 @@ public class Enemy : MonoBehaviour
             Destroy(GetComponent<Collider2D>());
             Destroy(this.gameObject, 2.8f);
         }
+
+        
     }
 }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     #region Declration Of Varibles
     [SerializeField]
     private float _speed = 3.5f;
+    private GameObject _laserThatGotFired;
     [SerializeField]
     private float _newSpeed = 5.5f;
     private bool _thrustersEnabled = false;
@@ -59,7 +60,6 @@ public class Player : MonoBehaviour
         if(_uiManager == null){
             Debug.LogError("The UIManager is NULL.");
         }
-
         _audioSource = GetComponent<AudioSource>();
 
         if(_audioSource == null){
@@ -138,10 +138,10 @@ public class Player : MonoBehaviour
         Vector3 offset = new Vector3(0, 1.5f, 0);
         _canFire = Time.time + _fireRate;
         if (_isTripleShotActive == true){
-            Instantiate(_TripleShotPrefab, transform.position + offset, Quaternion.identity);
+            _laserThatGotFired = Instantiate(_TripleShotPrefab, transform.position + offset, Quaternion.identity);
         }
         else{
-            Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
+            _laserThatGotFired = Instantiate(_laserPrefab, transform.position + offset, Quaternion.identity);
         }
         _audioSource.clip = _laserFireAudio;
         _audioSource.Play(0);
@@ -315,5 +315,9 @@ public class Player : MonoBehaviour
     public void NegativePowerup(){
         _score -= 30;
         _uiManager.UpdateScoreText(_score);
+    }
+
+    public GameObject FiredLaser(){
+        return _laserThatGotFired;
     }
 }
