@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour
     private Enemy _enemy;
     private Player _player;
     private int _oneTime = 0;
+    private GameObject _spawnedPowerup;
     // Start is called before the first frame update
     void Start()
     {
@@ -134,7 +135,7 @@ public class SpawnManager : MonoBehaviour
 
         while (_stopSpawning == false){
             Vector3 posToSpawn = new Vector3(Random.Range(-9, 9), 7, 0);
-            Instantiate(_powerups[Random.Range(0, 7)], posToSpawn, Quaternion.identity);
+            _spawnedPowerup = Instantiate(_powerups[Random.Range(0, 7)], posToSpawn, Quaternion.identity);
             yield return new WaitForSeconds(Random.Range(3.0f, _rareaty1));
         }
     }
@@ -149,5 +150,9 @@ public class SpawnManager : MonoBehaviour
 
     private void EnemyKills(){
         _uiManager.UpdateWave(_wave);
+    }
+
+    public GameObject SpawnedPowerup(){
+        return _spawnedPowerup;
     }
 }

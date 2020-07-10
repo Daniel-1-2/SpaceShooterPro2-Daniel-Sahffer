@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private GameObject playerLaser;
     [SerializeField]
     private float _ramSpeed = 1;
+    private SpawnManager _spawnManager;
     // Start is called before the first frame update
     void Start(){
         FireLaser();
@@ -35,6 +36,11 @@ public class Enemy : MonoBehaviour
         if(_explosion == null){
             Debug.LogError("The AudioSource on the Explosion is NULL.");
         }
+        _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        if(_spawnManager == null){
+            Debug.LogError("The Spawn Manager is NULL.");
+        }
+
     }
 
     // Update is called once per frame
@@ -50,6 +56,11 @@ public class Enemy : MonoBehaviour
         Vector3 ramDirection = transform.position - _player.transform.position;
         if(ramDirection.x <= 1 || ramDirection.y <= 1){
             transform.Translate(_player.transform.position * Time.deltaTime * _ramSpeed);
+        }
+        float distance = transform.position.x - _spawnManager.SpawnedPowerup().transform.position.x;
+        if(distance <= 1 && transform.position.y < _spawnManager.SpawnedPowerup().transform.position.y){
+            Debug.Log("Worked");
+            Instantiate(_laserPrefab, transform.position, Quaternion.identity);
         }
     }
 

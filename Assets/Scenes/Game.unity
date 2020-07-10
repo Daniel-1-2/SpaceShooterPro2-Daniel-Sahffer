@@ -920,8 +920,6 @@ MonoBehaviour:
   - {fileID: 5685056996518429651, guid: 3ae8bda987a53dc4985a82f1e1463943, type: 3}
   - {fileID: 5139683861112292835, guid: 20528c2bf895dd44984bac5c20b9b6ec, type: 3}
   - {fileID: 7358402298576772170, guid: d6ac1dc53218b1844a640c46d00bb757, type: 3}
-  _sheildVisual: {fileID: 7707328497548415967, guid: 013e447431d0c334bbeabb17244ced70,
-    type: 3}
 --- !u!212 &553675831
 SpriteRenderer:
   m_ObjectHideFlags: 0
