@@ -59,8 +59,15 @@ public class Enemy : MonoBehaviour
         }
         float distance = transform.position.x - _spawnManager.SpawnedPowerup().transform.position.x;
         if(distance <= 1 && transform.position.y < _spawnManager.SpawnedPowerup().transform.position.y){
-            Debug.Log("Worked");
             Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+        }
+        if(this.gameObject.CompareTag("XrayEnemy")){
+            float distanceBetween = transform.position.x - _player.transform.position.x;
+            Debug.Log(distanceBetween);
+            if(transform.position.y < _player.transform.position.y && distanceBetween <= 2){
+                Debug.Log("Duhh");
+                Instantiate(_laserPrefab, transform.position, Quaternion.Inverse(Quaternion.identity));
+            }
         }
     }
 

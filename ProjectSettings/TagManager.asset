@@ -11,6 +11,7 @@ TagManager:
   - Powerup
   - SuicideBomber
   - DogerEnemy
+  - XrayEnemy
   layers:
   - Default
   - TransparentFX
