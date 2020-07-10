@@ -167,7 +167,7 @@ MonoBehaviour:
   _score: 0
   _speedMultiplier: 2
   _lives: 3
-  _ammo: 100
+  _ammo: 15
   _engines:
   - {fileID: 1698311559}
   - {fileID: 1849657613}
